@@ -14,7 +14,15 @@ const InfiniteScrollList = () => {
    
     return (
         <div>
-            {console.log(data)}
+            <div>
+                {data.map((item, index)=>(
+                    <div>
+                        <p><span>comment id : </span><span>{item.id}</span></p>
+                        <p><span>email : </span><span>{item.email}</span></p>
+                        <p><span>comment : </span><span>{item.body}</span></p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
