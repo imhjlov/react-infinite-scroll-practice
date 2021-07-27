@@ -3,12 +3,17 @@ import axios from 'axios';
 
 
 const InfiniteScrollList = () => {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(10);
+
+    const callDataAPI = `https://jsonplaceholder.typicode.com/comments?_page=${page}&_limit=${limit}`;
+    
     //데이터 최초 한번만 불러옴, 그렇지 않으면 무한으로 받아옴..
     useEffect(()=>{
-        axios.get('https://jsonplaceholder.typicode.com/comments')
+        axios.get(callDataAPI)
         .then(response =>{
-            setData(response.data);  
+            setData(response.data); 
         });
     },[]);
    
